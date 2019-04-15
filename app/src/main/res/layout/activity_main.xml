@@ -21,12 +21,13 @@
         android:id="@+id/chooseText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:text="Choose A Category"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="26sp"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.122" />
+        app:layout_constraintTop_toBottomOf="@+id/appToolbar" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -49,28 +50,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Button" />
+            android:text="Distance" />
 
         <Button
             android:id="@+id/volumeButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Button" />
+            android:text="Volume" />
 
         <Button
             android:id="@+id/massButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Button" />
+            android:text="Mass" />
 
         <Button
             android:id="@+id/velocityButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Button" />
+            android:text="Velocity" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

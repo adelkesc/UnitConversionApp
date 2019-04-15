@@ -10,17 +10,21 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class velocity_activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class velocity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     EditText convertFrom;
+    TextView resultDisplay;
+    int spinner1;
+    int spinner2;
+    int result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.velocity_acitvity);
+        setContentView(R.layout.activity_velocity);
 
         convertFrom = (EditText) findViewById(R.id.entryView);
-        TextView resultDisplay = (TextView) findViewById(R.id.resultView);
+        resultDisplay = (TextView) findViewById(R.id.resultView);
         Button button = (Button) findViewById(R.id.convertButton);
 
         Spinner spinnerFrom = (Spinner) findViewById(R.id.spinnerDropdown);
@@ -37,32 +41,43 @@ public class velocity_activity extends AppCompatActivity implements AdapterView.
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //convertValue();
+                //int value = Integer.parseInt(convertFrom.getText().toString());
+                convertValue();
             }
         });
 
     }
 
-    public void convertValue(int value, int spinner1, int spinner2) {
-        //int value = Integer.parseInt(convertFrom.getText().toString());
-    }
-
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-        int value = Integer.parseInt(convertFrom.getText().toString());
-//        if(parent.getId() == R.id.spinnerDropdown)
-//        {
-//            int spinner1 = Integer.parseInt(parent.getItemAtPosition(position).toString());
-//        }
-//        else if(parent.getId() == R.id.spinnerDropdown2)
-//        {
-//            int spinner2 = Integer.parseInt(parent.getItemAtPosition(position).toString());
-//        }
+        if(parent.getId() == R.id.spinnerDropdown)
+        {
+            spinner1 = Integer.parseInt(parent.getItemAtPosition(position).toString());
+        }
+        else if(parent.getId() == R.id.spinnerDropdown2)
+        {
+            spinner2 = Integer.parseInt(parent.getItemAtPosition(position).toString());
+        }
+
+        convertValue();
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
         //no method here
+    }
+
+    public void convertValue() {
+        int value = Integer.parseInt(convertFrom.getText().toString());
+
+        if(spinner1 == 0 && spinner2 == 1)
+        {
+            result = value * 3;
+        }
+        else if(spinner1 == 1 && spinner2 == 0)
+        {
+            result = value * 2;
+        }
     }
 }

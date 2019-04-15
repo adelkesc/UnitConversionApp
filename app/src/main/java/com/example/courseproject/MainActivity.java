@@ -17,11 +17,38 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.appToolbar);
         setSupportActionBar(toolbar);
 
+        Button button = (Button) findViewById(R.id.distanceButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, distance.class);
+                startActivity(intent);
+            }
+        });
+
+        Button button2 = (Button) findViewById(R.id.volumeButton);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, volume.class);
+                startActivity(intent);
+            }
+        });
+
+        Button button3 = (Button) findViewById(R.id.massButton);
+        button3.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, mass.class);
+                startActivity(intent);
+            }
+        });
+
         Button button4 = (Button) findViewById(R.id.velocityButton);
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, velocity_activity.class);
+                Intent intent = new Intent(MainActivity.this, velocity.class);
                 startActivity(intent);
             }
         });
