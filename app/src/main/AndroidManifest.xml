@@ -13,7 +13,8 @@
         <activity android:name=".distance" />
         <activity android:name=".mass" />
         <activity android:name=".velocity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:label="Unit Converter">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

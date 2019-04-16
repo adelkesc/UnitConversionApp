@@ -50,28 +50,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Distance" />
+            android:text="Distance"
+            android:drawableLeft="@drawable/ic_map_icon_24px"/>
 
         <Button
             android:id="@+id/volumeButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Volume" />
+            android:text="Volume"
+            android:drawableLeft="@drawable/ic_local_drink_icon_24px"/>
 
         <Button
             android:id="@+id/massButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Mass" />
+            android:text="Mass"
+            android:drawableLeft="@drawable/ic_fitness_center_icon_24px"/>
 
         <Button
             android:id="@+id/velocityButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Velocity" />
+            android:text="Velocity"
+            android:drawableLeft="@drawable/ic_motorcycle_icon_24px"/>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
