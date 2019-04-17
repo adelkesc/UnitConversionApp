@@ -14,9 +14,8 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
 
     EditText convertFrom;
     TextView resultDisplay;
-    int spinner1;
-    int spinner2;
-    int result;
+    Spinner spinnerFrom;
+    Spinner spinnerTo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +26,8 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
         resultDisplay = (TextView) findViewById(R.id.resultView);
         Button button = (Button) findViewById(R.id.convertButton);
 
-        Spinner spinnerFrom = (Spinner) findViewById(R.id.spinnerDropdown);
-        Spinner spinnerTo = (Spinner) findViewById(R.id.spinnerDropdown2);
+        spinnerFrom = (Spinner) findViewById(R.id.spinnerDropdown);
+        spinnerTo = (Spinner) findViewById(R.id.spinnerDropdown2);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.velocity_array, android.R.layout.simple_spinner_item);
@@ -41,26 +40,21 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //int value = Integer.parseInt(convertFrom.getText().toString());
-                convertValue();
+//                int value = Integer.parseInt(convertFrom.getText().toString());
+//                resultDisplay.setText(String.valueOf(value));
             }
         });
-
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        spinnerFrom.setSelection(position);
+        spinnerTo.setSelection(position);
 
-        if(parent.getId() == R.id.spinnerDropdown)
-        {
-            spinner1 = Integer.parseInt(parent.getItemAtPosition(position).toString());
-        }
-        else if(parent.getId() == R.id.spinnerDropdown2)
-        {
-            spinner2 = Integer.parseInt(parent.getItemAtPosition(position).toString());
-        }
+        String values = "Spinner 1: " + spinnerFrom.getSelectedItem().toString() +
+                "\nSpinner 2: " + spinnerTo.getSelectedItem().toString();
 
-        convertValue();
+        resultDisplay.setText(values);
     }
 
     @Override
@@ -68,16 +62,4 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
         //no method here
     }
 
-    public void convertValue() {
-        int value = Integer.parseInt(convertFrom.getText().toString());
-
-        if(spinner1 == 0 && spinner2 == 1)
-        {
-            result = value * 3;
-        }
-        else if(spinner1 == 1 && spinner2 == 0)
-        {
-            result = value * 2;
-        }
-    }
 }

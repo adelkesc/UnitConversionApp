@@ -17,7 +17,9 @@
         <item>Metric Tonnes</item>
     </string-array>
 
-    <string-array name="volume_array"></string-array>
+    <string-array name="volume_array">
+        <item>teaspoon</item>
+    </string-array>
 
     <string-array name="distance_array">
         <item>Inches</item>
