@@ -9,10 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".volume"></activity>
-        <activity android:name=".distance" />
-        <activity android:name=".mass" />
-        <activity android:name=".velocity" />
+        <activity android:name=".Volume"></activity>
+        <activity android:name=".Distance" />
+        <activity android:name=".Mass" />
+        <activity android:name=".Velocity" />
         <activity android:name=".MainActivity"
             android:label="Unit Converter">
             <intent-filter>

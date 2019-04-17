@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class velocity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class Velocity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     EditText convertFrom;
     TextView resultDisplay;

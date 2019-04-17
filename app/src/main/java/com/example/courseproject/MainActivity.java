@@ -19,11 +19,17 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.appToolbar);
         setSupportActionBar(toolbar);
 
+        //might go in onOptionSelect
+//        getSupportFragmentManager()
+//                .beginTransaction()
+//                .replace(R.id.linearLayout, new SettingsPreferences())
+//                .commit();
+
         Button button = (Button) findViewById(R.id.distanceButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, distance.class);
+                Intent intent = new Intent(MainActivity.this, Distance.class);
                 startActivity(intent);
             }
         });
@@ -32,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, volume.class);
+                Intent intent = new Intent(MainActivity.this, Volume.class);
                 startActivity(intent);
             }
         });
@@ -41,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         button3.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, mass.class);
+                Intent intent = new Intent(MainActivity.this, Mass.class);
                 startActivity(intent);
             }
         });
@@ -50,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, velocity.class);
+                Intent intent = new Intent(MainActivity.this, Velocity.class);
                 startActivity(intent);
             }
         });

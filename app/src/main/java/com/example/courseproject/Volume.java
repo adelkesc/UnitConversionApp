@@ -3,7 +3,7 @@ package com.example.courseproject;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class volume extends AppCompatActivity {
+public class Volume extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
