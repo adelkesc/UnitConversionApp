@@ -2,6 +2,7 @@ package com.example.courseproject;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -22,9 +23,13 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_velocity);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.appToolbar2);
+        setSupportActionBar(toolbar);
+
         convertFrom = (EditText) findViewById(R.id.entryView);
         resultDisplay = (TextView) findViewById(R.id.resultView);
-        Button button = (Button) findViewById(R.id.convertButton);
+        Button convertButton = (Button) findViewById(R.id.convertButton);
+        Button saveButton = (Button) findViewById(R.id.saveButton);
 
         spinnerFrom = (Spinner) findViewById(R.id.spinnerDropdown);
         spinnerTo = (Spinner) findViewById(R.id.spinnerDropdown2);
@@ -37,11 +42,18 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
         spinnerFrom.setOnItemSelectedListener(this);
         spinnerTo.setOnItemSelectedListener(this);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        convertButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                int value = Integer.parseInt(convertFrom.getText().toString());
 //                resultDisplay.setText(String.valueOf(value));
+            }
+        });
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //save to firebase
             }
         });
     }
