@@ -8,4 +8,9 @@
         android:icon="@drawable/ic_settings_icon_20px"
         app:showAsAction="always"/>
 
+    <item
+        android:id="@+id/retrieveData"
+        android:title="Retrieve Conversions"
+        app:showAsAction="ifRoom"/>
+
 </menu>

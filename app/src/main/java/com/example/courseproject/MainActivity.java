@@ -74,6 +74,10 @@ public class MainActivity extends AppCompatActivity {
                 //Intent or fragment leading to settings page here...
                 return true;
 
+            case R.id.retrieveData:
+                //Intent or fragment
+                return true;
+
                 default:
                     return super.onOptionsItemSelected(item);
         }
