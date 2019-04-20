@@ -17,6 +17,10 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
     TextView resultDisplay;
     Spinner spinnerFrom;
     Spinner spinnerTo;
+    String[] menuArray;
+
+    String spinner1 = null;
+    String spinner2 = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,8 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
 
         spinnerFrom = (Spinner) findViewById(R.id.spinnerDropdown);
         spinnerTo = (Spinner) findViewById(R.id.spinnerDropdown2);
+
+        menuArray = getResources().getStringArray(R.array.velocity_array);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.velocity_array, android.R.layout.simple_spinner_item);
@@ -60,12 +66,26 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        spinnerFrom.setSelection(position);
-        spinnerTo.setSelection(position);
+//        spinnerFrom.setSelection(position);
+//        spinnerTo.setSelection(position);
+//
+//        String values = "Spinner 1: " + spinnerFrom.getSelectedItem().toString() +
+//                "\nSpinner 2: " + spinnerTo.getSelectedItem().toString();
+//
+//        resultDisplay.setText(values);
 
-        String values = "Spinner 1: " + spinnerFrom.getSelectedItem().toString() +
-                "\nSpinner 2: " + spinnerTo.getSelectedItem().toString();
 
+
+        if(parent.getId() == R.id.spinnerDropdown)
+        {
+            spinner1 =(menuArray[position]);
+        }
+        else if(parent.getId() == R.id.spinnerDropdown2)
+        {
+            spinner2 =(menuArray[position]);
+        }
+
+        String values = "Spinner 1: " + spinner1 + "\nSpinner2: " + spinner2;
         resultDisplay.setText(values);
     }
 
