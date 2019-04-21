@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Velocity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -21,6 +22,7 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
 
     String spinner1 = null;
     String spinner2 = null;
+    int value;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +53,8 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
         convertButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                int value = Integer.parseInt(convertFrom.getText().toString());
-//                resultDisplay.setText(String.valueOf(value));
+                value = Integer.parseInt(convertFrom.getText().toString());
+                showResult(value);
             }
         });
 
@@ -60,21 +62,13 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
             @Override
             public void onClick(View v) {
                 //save to firebase
+//                Toast.makeText(this, "Result saved.", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//        spinnerFrom.setSelection(position);
-//        spinnerTo.setSelection(position);
-//
-//        String values = "Spinner 1: " + spinnerFrom.getSelectedItem().toString() +
-//                "\nSpinner 2: " + spinnerTo.getSelectedItem().toString();
-//
-//        resultDisplay.setText(values);
-
-
 
         if(parent.getId() == R.id.spinnerDropdown)
         {
@@ -85,8 +79,8 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
             spinner2 =(menuArray[position]);
         }
 
-        String values = "Spinner 1: " + spinner1 + "\nSpinner2: " + spinner2;
-        resultDisplay.setText(values);
+        convertUnits(spinner1, spinner2);
+//        showResult(result);
     }
 
     @Override
@@ -94,4 +88,29 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
         //no method here
     }
 
+    public void convertUnits(String spinner1, String spinner2)
+    {
+//        Toast.makeText(this, spinner1, Toast.LENGTH_SHORT).show();
+
+        if(spinner1.contains("Double") && spinner2.contains("Triple"))
+        {
+            String success = "This works.";
+            Toast.makeText(this, success, Toast.LENGTH_SHORT).show();
+        }
+        else if(spinner1.contains("Triple") && spinner2.contains("Double"))
+        {
+            String success = "This works.";
+            Toast.makeText(this, success, Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            String fail = "This doesn't work.";
+            Toast.makeText(this, fail, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void showResult(int value)
+    {
+        resultDisplay.setText(String.valueOf(value));
+    }
 }
