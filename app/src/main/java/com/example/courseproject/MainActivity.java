@@ -19,12 +19,6 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.appToolbar);
         setSupportActionBar(toolbar);
 
-        //might go in onOptionSelect
-//        getSupportFragmentManager()
-//                .beginTransaction()
-//                .replace(R.id.linearLayout, new SettingsPreferences())
-//                .commit();
-
         Button button = (Button) findViewById(R.id.distanceButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,11 +65,15 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
             case R.id.settingsButton:
-                //Intent or fragment leading to settings page here...
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.linearLayout, new SettingsPreferences())
+                        .commit();
                 return true;
 
             case R.id.retrieveData:
-                //Intent or fragment
+                Intent intent = new Intent(MainActivity.this, conversionRetrieval.class);
+                startActivity(intent);
                 return true;
 
                 default:

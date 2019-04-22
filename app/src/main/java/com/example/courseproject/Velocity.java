@@ -62,7 +62,9 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
             @Override
             public void onClick(View v) {
                 //save to firebase
-//                Toast.makeText(this, "Result saved.", Toast.LENGTH_SHORT).show();
+                resultDisplay.setText("");
+                Toast.makeText(Velocity.this, "Result saved.", Toast.LENGTH_SHORT)
+                        .show();
             }
         });
     }
