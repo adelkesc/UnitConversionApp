@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".conversionRetrieval"></activity>
+        <activity android:name=".ConversionRetrieval"></activity>
         <activity android:name=".Volume" />
         <activity android:name=".Distance" />
         <activity android:name=".Mass" />

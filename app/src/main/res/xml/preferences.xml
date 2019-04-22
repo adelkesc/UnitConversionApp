@@ -4,7 +4,7 @@
         android:title="Color Preference">
         <CheckBoxPreference
             android:key="color_choice_dark"
-            android:title="Enable Dark Layout"
+            android:title="Enable Dark Background"
             android:defaultValue="false"/>
     </PreferenceCategory>
     <!--colors xml, android:colors... -->

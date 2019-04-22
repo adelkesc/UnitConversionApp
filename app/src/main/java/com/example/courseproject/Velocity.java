@@ -12,6 +12,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class Velocity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     EditText convertFrom;
@@ -24,6 +27,8 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
     String spinner2 = null;
     int value;
 
+    private DatabaseReference appDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +36,8 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.appToolbar2);
         setSupportActionBar(toolbar);
+
+        appDatabase = FirebaseDatabase.getInstance().getReference();
 
         convertFrom = (EditText) findViewById(R.id.entryView);
         resultDisplay = (TextView) findViewById(R.id.resultView);
@@ -62,6 +69,9 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
             @Override
             public void onClick(View v) {
                 //save to firebase
+                int valueToSave = Integer.parseInt(resultDisplay.getText().toString());
+                appDatabase.child("savedConversion").setValue(valueToSave);
+
                 resultDisplay.setText("");
                 Toast.makeText(Velocity.this, "Result saved.", Toast.LENGTH_SHORT)
                         .show();

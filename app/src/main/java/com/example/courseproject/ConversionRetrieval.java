@@ -3,7 +3,7 @@ package com.example.courseproject;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class conversionRetrieval extends AppCompatActivity {
+public class ConversionRetrieval extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
