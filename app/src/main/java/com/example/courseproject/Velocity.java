@@ -47,7 +47,7 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
         spinnerFrom = (Spinner) findViewById(R.id.spinnerDropdown);
         spinnerTo = (Spinner) findViewById(R.id.spinnerDropdown2);
 
-        menuArray = getResources().getStringArray(R.array.velocity_array);
+//        menuArray = getResources().getStringArray(R.array.velocity_array);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.velocity_array, android.R.layout.simple_spinner_item);
@@ -70,7 +70,7 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
             public void onClick(View v) {
                 //save to firebase
                 int valueToSave = Integer.parseInt(resultDisplay.getText().toString());
-                appDatabase.child("savedConversion").setValue(valueToSave);
+                appDatabase.child("SavedConversions").setValue(valueToSave);
 
                 resultDisplay.setText("");
                 Toast.makeText(Velocity.this, "Result saved.", Toast.LENGTH_SHORT)
@@ -84,14 +84,18 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
 
         if(parent.getId() == R.id.spinnerDropdown)
         {
-            spinner1 =(menuArray[position]);
-        }
-        else if(parent.getId() == R.id.spinnerDropdown2)
-        {
-            spinner2 =(menuArray[position]);
+//            spinner1 =(menuArray[position]);
+            spinner1 = spinnerFrom.getSelectedItem().toString();
+
+            if(parent.getId() == R.id.spinnerDropdown2)
+            {
+//                spinner2 =(menuArray[position]);
+                spinner2 = spinnerTo.getSelectedItem().toString();
+            }
         }
 
-        convertUnits(spinner1, spinner2);
+
+//        convertUnits(spinner1, spinner2);
 //        showResult(result);
     }
 
@@ -102,23 +106,23 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
 
     public void convertUnits(String spinner1, String spinner2)
     {
-//        Toast.makeText(this, spinner1, Toast.LENGTH_SHORT).show();
-
-        if(spinner1.contains("Double") && spinner2.contains("Triple"))
-        {
-            String success = "This works.";
-            Toast.makeText(this, success, Toast.LENGTH_SHORT).show();
-        }
-        else if(spinner1.contains("Triple") && spinner2.contains("Double"))
-        {
-            String success = "This works.";
-            Toast.makeText(this, success, Toast.LENGTH_SHORT).show();
-        }
-        else
-        {
-            String fail = "This doesn't work.";
-            Toast.makeText(this, fail, Toast.LENGTH_SHORT).show();
-        }
+//        Toast.makeText(this, spinner2, Toast.LENGTH_SHORT).show();
+//
+//        if(spinner1.contains("Double") && spinner2.contains("Triple"))
+//        {
+//            String success = "This works.";
+//            Toast.makeText(this, success, Toast.LENGTH_SHORT).show();
+//        }
+//        else if(spinner1.contains("Triple") && spinner2.contains("Double"))
+//        {
+//            String success = "This works.";
+//            Toast.makeText(this, success, Toast.LENGTH_SHORT).show();
+//        }
+//        else
+//        {
+//            String fail = "This doesn't work.";
+//            Toast.makeText(this, fail, Toast.LENGTH_SHORT).show();
+//        }
     }
 
     public void showResult(int value)

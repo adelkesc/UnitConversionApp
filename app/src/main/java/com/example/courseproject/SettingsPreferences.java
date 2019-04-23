@@ -33,6 +33,7 @@ public class SettingsPreferences extends PreferenceFragmentCompat {
                 OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object o) {
+                //if statement checking
                 return false;
             }
         });
