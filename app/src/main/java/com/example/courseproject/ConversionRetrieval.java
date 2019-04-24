@@ -3,6 +3,7 @@ package com.example.courseproject;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -14,6 +15,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ConversionRetrieval extends AppCompatActivity {
 
+    private static final String TAG = "PostActivityDetails";
     private DatabaseReference appDatabase;
 
     @Override
@@ -24,21 +26,22 @@ public class ConversionRetrieval extends AppCompatActivity {
         Button retrieveButton = (Button) findViewById(R.id.retrieveButton);
         Button clearButton = (Button) findViewById(R.id.saveButton);
 
-        appDatabase = FirebaseDatabase.getInstance().getReference().child("SavedConversions");
+        appDatabase = FirebaseDatabase.getInstance().getReference();
 
         retrieveButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                appDatabase.child("SavedConversions").addValueEventListener
-                        (new ValueEventListener() {
+                appDatabase.child("SavedConversions").addListenerForSingleValueEvent(
+                        new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
+                        int savedValue = dataSnapshot.child("SavedConversions")
+                                .getValue(Integer.class);
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                        Log.w(TAG, "onCancelled", databaseError.toException());
                     }
                 });
             }

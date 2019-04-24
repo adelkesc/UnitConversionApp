@@ -23,21 +23,5 @@ public class SettingsPreferences extends PreferenceFragmentCompat {
         addPreferencesFromResource(R.xml.preferences);
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        checkBoxPreference = (CheckBoxPreference) getPreferenceManager()
-                .findPreference("color_choice_dark");
-
-        checkBoxPreference.setOnPreferenceChangeListener(new Preference.
-                OnPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object o) {
-                //if statement checking
-                return false;
-            }
-        });
-        return null;
-    }
 
 }
