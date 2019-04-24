@@ -14,9 +14,6 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ConversionRetrieval extends AppCompatActivity {
 
-    Button retrieveButton;
-    Button clearButton;
-
     private DatabaseReference appDatabase;
 
     @Override
@@ -24,14 +21,16 @@ public class ConversionRetrieval extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conversion_retrieval);
 
-        retrieveButton = (Button) findViewById(R.id.retrieveButton);
-        clearButton = (Button) findViewById(R.id.saveButton);
+        Button retrieveButton = (Button) findViewById(R.id.retrieveButton);
+        Button clearButton = (Button) findViewById(R.id.saveButton);
+
+        appDatabase = FirebaseDatabase.getInstance().getReference().child("SavedConversions");
 
         retrieveButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                appDatabase = FirebaseDatabase.getInstance().getReference();
-                appDatabase.child("SavedConversions").addValueEventListener(new ValueEventListener() {
+                appDatabase.child("SavedConversions").addValueEventListener
+                        (new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -45,13 +44,11 @@ public class ConversionRetrieval extends AppCompatActivity {
             }
         });
 
-        clearButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //write .child("value") after .getReference() if necessary
-                appDatabase = FirebaseDatabase.getInstance().getReference();
-                appDatabase.removeValue();
-            }
-        });
+//        clearButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                appDatabase.removeValue();
+//            }
+//        });
     }
 }
