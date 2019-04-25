@@ -54,8 +54,8 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerFrom.setAdapter(adapter);
         spinnerTo.setAdapter(adapter);
-//        spinnerFrom.setOnItemSelectedListener(this);
-//        spinnerTo.setOnItemSelectedListener(this);
+        spinnerFrom.setOnItemSelectedListener(this);
+        spinnerTo.setOnItemSelectedListener(this);
 
         convertButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,9 +68,9 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //save to firebase
-                int valueToSave = Integer.parseInt(resultDisplay.getText().toString());
-                appDatabase.child("SavedConversions").setValue(valueToSave);
+                String valueToSave = resultDisplay.getText().toString();
+                appDatabase.child("Saved Conversions").setValue(valueToSave);
+
 
                 resultDisplay.setText("");
                 Toast.makeText(Velocity.this, "Result saved.", Toast.LENGTH_SHORT)
@@ -81,20 +81,8 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-        if(parent.getId() == R.id.spinnerDropdown)
-        {
-//            spinner1 =(menuArray[position]);
-            spinner1 = spinnerFrom.getSelectedItem().toString();
-
-
-        }
-        else if(parent.getId() == R.id.spinnerDropdown2)
-        {
-//                spinner2 =(menuArray[position]);
-            spinner2 = spinnerTo.getSelectedItem().toString();
-        }
-
+        spinner1 = spinnerFrom.getSelectedItem().toString();
+        spinner2 = spinnerTo.getSelectedItem().toString();
 
         convertUnits(spinner1, spinner2);
 //        showResult(result);

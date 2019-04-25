@@ -13,15 +13,13 @@ import android.view.ViewGroup;
 
 public class SettingsPreferences extends PreferenceFragmentCompat {
 
-    SharedPreferences shared;
-    SharedPreferences.Editor editor;
-
-    CheckBoxPreference checkBoxPreference;
-
     @Override
     public void onCreatePreferences(Bundle bundle, String s) {
         addPreferencesFromResource(R.xml.preferences);
+
     }
+
+
 
 
 }

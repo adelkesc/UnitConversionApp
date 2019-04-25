@@ -1,12 +1,16 @@
 package com.example.courseproject;
 
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -16,7 +20,8 @@ import com.google.firebase.database.ValueEventListener;
 public class ConversionRetrieval extends AppCompatActivity {
 
     private static final String TAG = "PostActivityDetails";
-    private DatabaseReference appDatabase;
+    private DatabaseReference reference;
+    EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,19 +29,21 @@ public class ConversionRetrieval extends AppCompatActivity {
         setContentView(R.layout.activity_conversion_retrieval);
 
         Button retrieveButton = (Button) findViewById(R.id.retrieveButton);
-        Button clearButton = (Button) findViewById(R.id.saveButton);
+        final Button clearButton = (Button) findViewById(R.id.clearButton);
+        editText = (EditText) findViewById(R.id.editText);
 
-        appDatabase = FirebaseDatabase.getInstance().getReference();
+        FirebaseDatabase appDatabase = FirebaseDatabase.getInstance();
+        reference = appDatabase.getReference("Saved Conversions");
 
-        retrieveButton.setOnClickListener(new View.OnClickListener(){
+        retrieveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appDatabase.child("SavedConversions").addListenerForSingleValueEvent(
+                reference.addValueEventListener(
                         new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        int savedValue = dataSnapshot.child("SavedConversions")
-                                .getValue(Integer.class);
+                        String savedValue = dataSnapshot.getValue(String.class);
+                        editText.setText(savedValue);
                     }
 
                     @Override
@@ -44,14 +51,16 @@ public class ConversionRetrieval extends AppCompatActivity {
                         Log.w(TAG, "onCancelled", databaseError.toException());
                     }
                 });
+
+
             }
         });
 
-//        clearButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                appDatabase.removeValue();
-//            }
-//        });
+        clearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                reference.removeValue();
+            }
+        });
     }
 }

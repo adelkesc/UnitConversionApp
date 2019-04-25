@@ -11,13 +11,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.appToolbar);
         setSupportActionBar(toolbar);
@@ -68,19 +71,33 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
             case R.id.settingsButton:
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.linearLayout, new SettingsPreferences())
-                        .commit();
+                Intent intent = new Intent(MainActivity.this, Settings.class);
+                startActivity(intent);
                 return true;
 
             case R.id.retrieveData:
-                Intent intent = new Intent(MainActivity.this, ConversionRetrieval.class);
-                startActivity(intent);
+                Intent intent2 = new Intent(MainActivity.this, ConversionRetrieval.class);
+                startActivity(intent2);
                 return true;
 
                 default:
                     return super.onOptionsItemSelected(item);
         }
     }
+
+    private void setTheme() {
+        SharedPreferences shared = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean appDark = shared.getBoolean("color_choice_dark", false);
+        if(appDark)
+        {
+            setTheme(R.style.AppTheme);
+            Toast.makeText(this, "Dark mode", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            setTheme(R.style.AppThemeLight);
+            Toast.makeText(this, "Light mode", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
 }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory
-        android:title="Color Preference">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#FFFFFF">
+    <PreferenceCategory android:title="Color Preference">
         <CheckBoxPreference
+            android:defaultValue="false"
             android:key="color_choice_dark"
-            android:title="Enable Dark Background"
-            android:defaultValue="false"/>
+            android:title="Enable Dark Background" />
     </PreferenceCategory>
     <!--colors xml, android:colors... -->
 </PreferenceScreen>
