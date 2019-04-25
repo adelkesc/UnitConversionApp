@@ -18,8 +18,4 @@ public class SettingsPreferences extends PreferenceFragmentCompat {
         addPreferencesFromResource(R.xml.preferences);
 
     }
-
-
-
-
 }

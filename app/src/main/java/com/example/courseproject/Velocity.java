@@ -71,7 +71,6 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
                 String valueToSave = resultDisplay.getText().toString();
                 appDatabase.child("Saved Conversions").setValue(valueToSave);
 
-
                 resultDisplay.setText("");
                 Toast.makeText(Velocity.this, "Result saved.", Toast.LENGTH_SHORT)
                         .show();

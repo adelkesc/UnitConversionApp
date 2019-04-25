@@ -32,10 +32,10 @@
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="219dp"
-        android:layout_height="272dp"
+        android:layout_width="183dp"
+        android:layout_height="48dp"
         android:layout_marginStart="98dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="99dp"
         android:ems="10"
         app:layout_constraintEnd_toEndOf="parent"
