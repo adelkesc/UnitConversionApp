@@ -9,7 +9,7 @@
     <string-array name="mass_array">
         <item>Ounces</item>
         <item>Pounds</item>
-        <item>Tons</item>
+        <item>US Tons</item>
         <item>Milligrams</item>
         <item>Grams</item>
         <item>Kilograms</item>

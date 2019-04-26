@@ -1,11 +1,15 @@
 package com.example.courseproject;
 
+import android.content.Intent;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,6 +35,9 @@ public class ConversionRetrieval extends AppCompatActivity {
         Button retrieveButton = (Button) findViewById(R.id.retrieveButton);
         final Button clearButton = (Button) findViewById(R.id.clearButton);
         editText = (EditText) findViewById(R.id.editText);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.appToolbarVolume);
+        setSupportActionBar(toolbar);
 
         FirebaseDatabase appDatabase = FirebaseDatabase.getInstance();
         reference = appDatabase.getReference("Saved Conversions");
@@ -62,5 +69,23 @@ public class ConversionRetrieval extends AppCompatActivity {
                 reference.removeValue();
             }
         });
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.sub_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.homeIcon:
+                Intent intent = new Intent(ConversionRetrieval.this, MainActivity.class);
+                startActivity(intent);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
