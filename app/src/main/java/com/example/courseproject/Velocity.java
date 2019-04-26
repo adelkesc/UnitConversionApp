@@ -1,8 +1,11 @@
 package com.example.courseproject;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -21,7 +24,7 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
     TextView resultDisplay;
     Spinner spinnerFrom;
     Spinner spinnerTo;
-    String[] menuArray;
+   // String[] menuArray;
 
     String spinner1 = null;
     String spinner2 = null;
@@ -34,7 +37,7 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_velocity);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.appToolbar2);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.appToolbarVelocity);
         setSupportActionBar(toolbar);
 
         appDatabase = FirebaseDatabase.getInstance().getReference();
@@ -76,6 +79,24 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
                         .show();
             }
         });
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.sub_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.homeIcon:
+                Intent intent = new Intent(Velocity.this, MainActivity.class);
+                startActivity(intent);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override

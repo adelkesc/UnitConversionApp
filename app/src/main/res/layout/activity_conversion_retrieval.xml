@@ -7,7 +7,7 @@
     tools:context=".ConversionRetrieval">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/appToolbar2"
+        android:id="@+id/appToolbarVelocity"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
@@ -28,7 +28,7 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appToolbar2" />
+        app:layout_constraintTop_toBottomOf="@+id/appToolbarVelocity" />
 
     <EditText
         android:id="@+id/editText"

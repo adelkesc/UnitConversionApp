@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:id="@+id/container">
+    android:id="@+id/constraintLayout">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/appToolbar"
@@ -22,12 +22,12 @@
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
-        android:orientation="vertical"
         android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -38,8 +38,9 @@
         <TextView
             android:id="@+id/chooseText"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="46dp"
             android:layout_marginTop="24dp"
+            android:gravity="center_horizontal"
             android:text="Choose A Category"
             android:textSize="26sp"
             app:layout_constraintHorizontal_bias="0.498"
@@ -52,32 +53,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Distance"
-            android:drawableLeft="@drawable/ic_map_icon_24px"/>
+            android:drawableLeft="@drawable/ic_map_icon_24px"
+            android:text="Distance" />
 
         <Button
             android:id="@+id/volumeButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Volume"
-            android:drawableLeft="@drawable/ic_local_drink_icon_24px"/>
+            android:drawableLeft="@drawable/ic_local_drink_icon_24px"
+            android:text="Volume" />
 
         <Button
             android:id="@+id/massButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Mass"
-            android:drawableLeft="@drawable/ic_fitness_center_icon_24px"/>
+            android:drawableLeft="@drawable/ic_fitness_center_icon_24px"
+            android:text="Mass" />
 
         <Button
             android:id="@+id/velocityButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Velocity"
-            android:drawableLeft="@drawable/ic_motorcycle_icon_24px"/>
+            android:drawableLeft="@drawable/ic_motorcycle_icon_24px"
+            android:text="Velocity" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

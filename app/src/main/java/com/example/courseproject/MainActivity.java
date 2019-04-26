@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -36,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 
-//        GetWeatherLocationAsync task = new GetWeatherLocationAsync();
-//        task.execute(GET_REQUEST);
+        GetBookAsync task = new GetBookAsync();
+        task.execute(GET_REQUEST);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.appToolbar);
         setSupportActionBar(toolbar);
@@ -108,11 +109,11 @@ public class MainActivity extends AppCompatActivity {
         if(appDark)
         {
             setTheme(R.style.AppTheme);
-            Toast.makeText(this, "Dark mode", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Dark mode", Toast.LENGTH_SHORT).show();
         }
         else {
             setTheme(R.style.AppThemeLight);
-            Toast.makeText(this, "Light mode", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Light mode", Toast.LENGTH_SHORT).show();
         }
     }
 //      NETWORKING UNDER CONSTRUCTION
@@ -123,8 +124,7 @@ public class MainActivity extends AppCompatActivity {
         HttpURLConnection urlConnection = null;
         InputStream inputStream = null;
 
-        try
-        {
+        try {
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
 
@@ -132,8 +132,13 @@ public class MainActivity extends AppCompatActivity {
             urlConnection.setConnectTimeout(15000);
             urlConnection.connect();
 
-            inputStream = urlConnection.getInputStream();
-            jsonResponse = readFromStream(inputStream);
+            if (urlConnection.getResponseCode() == 200) {
+                inputStream = urlConnection.getInputStream();
+                jsonResponse = readFromStream(inputStream);
+            }
+            else{
+                Toast.makeText(this, "NOT WORKING", Toast.LENGTH_SHORT).show();
+            }
         }
         catch (IOException e)
         {
@@ -150,8 +155,7 @@ public class MainActivity extends AppCompatActivity {
                 inputStream.close();
             }
         }
-
-        return null;
+        return jsonResponse;
     }
 
     private String readFromStream(InputStream inputStream) throws IOException
@@ -172,40 +176,46 @@ public class MainActivity extends AppCompatActivity {
         return output.toString();
     }
 
-//    private class GetWeatherLocationAsync extends AsyncTask<String, Void, String> {
-//
-//        @Override
-//        protected String doInBackground(String... strings) {
-//            URL url = null;
-//            String jsonResponse = null;
-//
-//            try
-//            {
-//                url = new URL(strings[0]);
-//                jsonResponse = sendHttpRequest(url);
-//            }
-//            catch (IOException e)
-//            {
-//                e.printStackTrace();
-//            }
-//            return jsonResponse;
-//        }
-//
-//        @Override
-//        protected void onPostExecute(String s) {
-//            JSONObject root = null;
-//
-//            try
-//            {
+    private class GetBookAsync extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... strings) {
+            URL url = null;
+            String jsonResponse = null;
+
+            try
+            {
+                url = new URL(strings[0]);
+                jsonResponse = sendHttpRequest(url);
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+            return jsonResponse;
+        }
+
+        @Override
+        protected void onPostExecute(String string) {
+            JSONObject root = null;
+            try
+            {
+                root = new JSONObject(string);
+                JSONObject properties = root.getJSONObject("properties");
+                String id = properties.getString("id");
+                Toast.makeText(MainActivity.this, id, Toast.LENGTH_LONG).show();
 //                root = new JSONObject(s);
-//                JSONObject properties = root.getJSONObject("properties");
-//                String id = properties.getString("id");
-//                Toast.makeText(MainActivity.this, id, Toast.LENGTH_LONG).show();
-//            }
-//            catch (JSONException je)
-//            {
-//                je.printStackTrace();
-//            }
-//        }
-//    }
+//                JSONArray books = root.getJSONArray("items");
+//                JSONObject firstBook = books.getJSONObject(0);
+//                JSONObject volumeInfo = firstBook.getJSONObject("volumeInfo");
+//                String title = volumeInfo.getString("title");
+
+//                Toast.makeText(MainActivity.this, title, Toast.LENGTH_SHORT).show();
+            }
+            catch (JSONException je)
+            {
+                je.printStackTrace();
+            }
+        }
+    }
 }
