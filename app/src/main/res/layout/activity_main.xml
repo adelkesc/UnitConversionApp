@@ -57,12 +57,12 @@
             android:text="Distance" />
 
         <Button
-            android:id="@+id/volumeButton"
+            android:id="@+id/temperatureButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:drawableLeft="@drawable/ic_local_drink_icon_24px"
-            android:text="Volume" />
+            android:drawableLeft="@drawable/ic_ac_unit_icon_24px"
+            android:text="Temperature" />
 
         <Button
             android:id="@+id/massButton"

@@ -2,8 +2,6 @@
     <string name="app_name">CourseProject</string>
 
     <string-array name="velocity_array">
-        <item>Double</item>
-        <item>Triple</item>
         <item>Miles Per Hour</item>
         <item>Kilometers Per Hour</item>
     </string-array>
@@ -16,10 +14,6 @@
         <item>Grams</item>
         <item>Kilograms</item>
         <item>Metric Tonnes</item>
-    </string-array>
-
-    <string-array name="volume_array">
-        <item>teaspoon</item>
     </string-array>
 
     <string-array name="temperature_array">

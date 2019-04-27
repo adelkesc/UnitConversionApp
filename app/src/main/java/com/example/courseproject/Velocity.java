@@ -112,14 +112,12 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
 
     public void convertUnits(String spinner1, String spinner2)
     {
-//        Toast.makeText(this, spinner2, Toast.LENGTH_SHORT).show();
-
-        if(spinner1.contains("Double") && spinner2.contains("Triple"))
+        if(spinner1.contains("Miles Per Hour") && spinner2.contains("Kilometers Per Hour"))
         {
             String success = "This works.";
             Toast.makeText(this, success, Toast.LENGTH_SHORT).show();
         }
-        else if(spinner1.contains("Triple") && spinner2.contains("Double"))
+        else if(spinner1.contains("Kilometers Per Hour") && spinner2.contains("Miles Per Hour"))
         {
             String success = "This works.";
             Toast.makeText(this, success, Toast.LENGTH_SHORT).show();

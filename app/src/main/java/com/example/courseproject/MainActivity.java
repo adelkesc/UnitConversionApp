@@ -1,6 +1,5 @@
 package com.example.courseproject;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -14,7 +13,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -35,9 +33,10 @@ public class MainActivity extends AppCompatActivity {
         setTheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 
-        GetBookAsync task = new GetBookAsync();
+        GetWeatherLocationAsync task = new GetWeatherLocationAsync();
         task.execute(GET_REQUEST);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.appToolbar);
@@ -52,11 +51,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button button2 = (Button) findViewById(R.id.volumeButton);
+        Button button2 = (Button) findViewById(R.id.temperatureButton);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Volume.class);
+                Intent intent = new Intent(MainActivity.this, Temperature.class);
                 startActivity(intent);
             }
         });
@@ -176,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
         return output.toString();
     }
 
-    private class GetBookAsync extends AsyncTask<String, Void, String> {
+    private class GetWeatherLocationAsync extends AsyncTask<String, Void, String> {
 
         @Override
         protected String doInBackground(String... strings) {
@@ -204,13 +203,6 @@ public class MainActivity extends AppCompatActivity {
                 JSONObject properties = root.getJSONObject("properties");
                 String id = properties.getString("id");
                 Toast.makeText(MainActivity.this, id, Toast.LENGTH_LONG).show();
-//                root = new JSONObject(s);
-//                JSONArray books = root.getJSONArray("items");
-//                JSONObject firstBook = books.getJSONObject(0);
-//                JSONObject volumeInfo = firstBook.getJSONObject("volumeInfo");
-//                String title = volumeInfo.getString("title");
-
-//                Toast.makeText(MainActivity.this, title, Toast.LENGTH_SHORT).show();
             }
             catch (JSONException je)
             {
