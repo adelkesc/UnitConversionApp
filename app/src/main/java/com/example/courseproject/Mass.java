@@ -28,7 +28,7 @@ public class Mass extends AppCompatActivity implements AdapterView.OnItemSelecte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mass);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.appToolbarMass);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.appToolbarCategory);
         setSupportActionBar(toolbar);
 
         convertFrom = (EditText) findViewById(R.id.entryView);
@@ -46,14 +46,14 @@ public class Mass extends AppCompatActivity implements AdapterView.OnItemSelecte
         spinnerTo.setOnItemSelectedListener(this);
     }
 
-    public boolean onCreateOptionMenu(Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.sub_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
             case R.id.homeIcon:
                 Intent intent = new Intent(Mass.this, MainActivity.class);
                 startActivity(intent);
@@ -62,7 +62,6 @@ public class Mass extends AppCompatActivity implements AdapterView.OnItemSelecte
             default:
                 return super.onOptionsItemSelected(item);
         }
-
     }
 
     @Override

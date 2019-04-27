@@ -36,7 +36,7 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_velocity);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.appToolbarVelocity);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.appToolbarCategory);
         setSupportActionBar(toolbar);
 
         appDatabase = FirebaseDatabase.getInstance().getReference();

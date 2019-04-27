@@ -202,7 +202,10 @@ public class MainActivity extends AppCompatActivity {
                 root = new JSONObject(string);
                 JSONObject properties = root.getJSONObject("properties");
                 String id = properties.getString("id");
-                Toast.makeText(MainActivity.this, id, Toast.LENGTH_LONG).show();
+                String county = properties.getString("name");
+                String state = properties.getString("state");
+                String location = "ID: " + id + "\nCounty: " + county + "\nState: " + state;
+                Toast.makeText(MainActivity.this, location, Toast.LENGTH_LONG).show();
             }
             catch (JSONException je)
             {

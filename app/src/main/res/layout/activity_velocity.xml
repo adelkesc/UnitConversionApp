@@ -7,7 +7,7 @@
     tools:context=".Velocity">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/appToolbarVelocity"
+        android:id="@+id/appToolbarCategory"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="28dp"
@@ -31,7 +31,7 @@
         android:textSize="26sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appToolbarVelocity" />
+        app:layout_constraintTop_toBottomOf="@+id/appToolbarCategory" />
 
     <EditText
         android:id="@+id/entryView"

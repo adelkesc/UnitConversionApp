@@ -28,7 +28,7 @@ public class Temperature extends AppCompatActivity implements AdapterView.OnItem
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_temperature);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.appToolbarTemperature);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.appToolbarCategory);
         setSupportActionBar(toolbar);
 
         convertFrom = (EditText) findViewById(R.id.entryView);
@@ -46,7 +46,7 @@ public class Temperature extends AppCompatActivity implements AdapterView.OnItem
         spinnerTo.setOnItemSelectedListener(this);
     }
 
-    public boolean onCreateOptionMenu(Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.sub_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }

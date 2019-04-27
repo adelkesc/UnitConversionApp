@@ -28,7 +28,7 @@ public class Distance extends AppCompatActivity implements AdapterView.OnItemSel
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_distance);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.appToolbarDistance);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.appToolbarCategory);
         setSupportActionBar(toolbar);
 
         convertFrom = (EditText) findViewById(R.id.entryView);
@@ -46,14 +46,14 @@ public class Distance extends AppCompatActivity implements AdapterView.OnItemSel
         spinnerTo.setOnItemSelectedListener(this);
     }
 
-    public boolean onCreateOptionMenu(Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.sub_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
             case R.id.homeIcon:
                 Intent intent = new Intent(Distance.this, MainActivity.class);
                 startActivity(intent);
@@ -62,7 +62,6 @@ public class Distance extends AppCompatActivity implements AdapterView.OnItemSel
             default:
                 return super.onOptionsItemSelected(item);
         }
-
     }
 
     @Override

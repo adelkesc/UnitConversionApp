@@ -7,7 +7,7 @@
     tools:context=".Distance">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/appToolbarDistance"
+        android:id="@+id/appToolbarCategory"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="28dp"
@@ -32,7 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appToolbarDistance" />
+        app:layout_constraintTop_toBottomOf="@+id/appToolbarCategory" />
 
     <EditText
         android:id="@+id/entryView"

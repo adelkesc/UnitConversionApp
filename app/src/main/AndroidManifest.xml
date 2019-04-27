@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeLight">
         <activity android:name=".Settings"></activity>
-        <activity android:name=".ConversionRetrieval" />
+        <activity android:name=".ConversionRetrieval"
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".Temperature" />
         <activity android:name=".Distance" />
         <activity android:name=".Mass" />
