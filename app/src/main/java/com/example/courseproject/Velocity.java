@@ -22,10 +22,9 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
 
     EditText convertFrom;
     TextView resultDisplay;
+
     Spinner spinnerFrom;
     Spinner spinnerTo;
-   // String[] menuArray;
-
     String spinner1 = null;
     String spinner2 = null;
     int value;
@@ -49,8 +48,6 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
 
         spinnerFrom = (Spinner) findViewById(R.id.spinnerDropdown);
         spinnerTo = (Spinner) findViewById(R.id.spinnerDropdown2);
-
-//        menuArray = getResources().getStringArray(R.array.velocity_array);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.velocity_array, android.R.layout.simple_spinner_item);

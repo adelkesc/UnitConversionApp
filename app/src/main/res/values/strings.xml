@@ -4,6 +4,8 @@
     <string-array name="velocity_array">
         <item>Double</item>
         <item>Triple</item>
+        <item>Miles Per Hour</item>
+        <item>Kilometers Per Hour</item>
     </string-array>
 
     <string-array name="mass_array">
@@ -18,6 +20,11 @@
 
     <string-array name="volume_array">
         <item>teaspoon</item>
+    </string-array>
+
+    <string-array name="temperature_array">
+        <item>Fahrenheit</item>
+        <item>Celsius</item>
     </string-array>
 
     <string-array name="distance_array">

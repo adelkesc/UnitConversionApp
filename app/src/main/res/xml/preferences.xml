@@ -7,5 +7,4 @@
             android:key="color_choice_dark"
             android:title="Enable Dark Background" />
     </PreferenceCategory>
-    <!--colors xml, android:colors... -->
 </PreferenceScreen>
