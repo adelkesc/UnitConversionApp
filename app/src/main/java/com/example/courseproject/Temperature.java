@@ -13,6 +13,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Temperature extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
@@ -27,6 +31,8 @@ public class Temperature extends AppCompatActivity implements AdapterView.OnItem
     private double value;
     private double result = 0;
 
+    private DatabaseReference appDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +40,8 @@ public class Temperature extends AppCompatActivity implements AdapterView.OnItem
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.appToolbarCategory);
         setSupportActionBar(toolbar);
+
+        appDatabase = FirebaseDatabase.getInstance().getReference();
 
         Button convertButton = (Button) findViewById(R.id.convertButton);
         Button saveButton = (Button) findViewById(R.id.saveButton);
@@ -63,7 +71,12 @@ public class Temperature extends AppCompatActivity implements AdapterView.OnItem
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String valueToSave = resultDisplay.getText().toString();
+                appDatabase.child("Saved Conversions").setValue(valueToSave);
 
+                resultDisplay.setText("");
+                Toast.makeText(Temperature.this, "Result saved.", Toast.LENGTH_SHORT)
+                        .show();
             }
         });
     }
@@ -108,6 +121,8 @@ public class Temperature extends AppCompatActivity implements AdapterView.OnItem
         }
         else
         {
+            String noConvert = "Not Applicable";
+            Toast.makeText(this, noConvert, Toast.LENGTH_SHORT).show();
             result = 0;
         }
     }

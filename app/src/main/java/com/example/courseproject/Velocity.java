@@ -127,8 +127,8 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
         }
         else
         {
-            String fail = "This doesn't work.";
-            Toast.makeText(this, fail, Toast.LENGTH_SHORT).show();
+            String noConvert = "Not Applicable";
+            Toast.makeText(this, noConvert, Toast.LENGTH_SHORT).show();
 
             result = 0;
         }
