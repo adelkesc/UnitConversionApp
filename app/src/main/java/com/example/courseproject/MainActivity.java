@@ -108,11 +108,9 @@ public class MainActivity extends AppCompatActivity {
         if(appDark)
         {
             setTheme(R.style.AppTheme);
-            //Toast.makeText(this, "Dark mode", Toast.LENGTH_SHORT).show();
         }
         else {
             setTheme(R.style.AppThemeLight);
-            //Toast.makeText(this, "Light mode", Toast.LENGTH_SHORT).show();
         }
     }
 
