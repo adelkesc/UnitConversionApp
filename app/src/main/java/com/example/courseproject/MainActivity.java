@@ -26,7 +26,7 @@ import java.nio.charset.Charset;
 
 public class MainActivity extends AppCompatActivity {
 
-    static final String GET_REQUEST = "https://api.weather.gov/zones/forecast/FLZ155/";
+    private static final String GET_REQUEST = "https://api.weather.gov/zones/forecast/FLZ155/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

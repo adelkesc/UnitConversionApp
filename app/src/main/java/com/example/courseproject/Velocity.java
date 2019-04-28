@@ -25,10 +25,11 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
 
     Spinner spinnerFrom;
     Spinner spinnerTo;
-    String spinner1 = null;
-    String spinner2 = null;
-    double value;
-    double result = 0;
+    private String spinner1 = null;
+    private String spinner2 = null;
+
+    private double value;
+    private double result = 0;
 
     private DatabaseReference appDatabase;
 
@@ -106,23 +107,17 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-        //no method here
+
     }
 
-    public void convertUnits(String spinner1, String spinner2, double value)
+    private void convertUnits(String spinner1, String spinner2, double value)
     {
         if(spinner1.contains("Miles Per Hour") && spinner2.contains("Kilometers Per Hour"))
         {
-            String success = "This works.";
-            Toast.makeText(this, success, Toast.LENGTH_SHORT).show();
-
             result = value * 1.61;
         }
         else if(spinner1.contains("Kilometers Per Hour") && spinner2.contains("Miles Per Hour"))
         {
-            String success = "This works.";
-            Toast.makeText(this, success, Toast.LENGTH_SHORT).show();
-
             result = value * 0.62;
         }
         else
@@ -134,7 +129,7 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
         }
     }
 
-    public void showResult(double result)
+    private void showResult(double result)
     {
         resultDisplay.setText(String.valueOf(result));
     }

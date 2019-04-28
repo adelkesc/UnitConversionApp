@@ -25,8 +25,8 @@ public class Distance extends AppCompatActivity implements AdapterView.OnItemSel
 
     Spinner spinnerFrom;
     Spinner spinnerTo;
-    String spinner1 = null;
-    String spinner2 = null;
+    private String spinner1 = null;
+    private String spinner2 = null;
 
     private double value;
     private double result = 0;
@@ -110,7 +110,7 @@ public class Distance extends AppCompatActivity implements AdapterView.OnItemSel
 
     }
 
-    public void convertUnits(String spinner1, String spinner2, double value)
+    private void convertUnits(String spinner1, String spinner2, double value)
     {
         switch (spinner1)
         {
@@ -131,7 +131,7 @@ public class Distance extends AppCompatActivity implements AdapterView.OnItemSel
         }
     }
 
-    public void showResult(double result)
+    private void showResult(double result)
     {
         resultDisplay.setText(String.valueOf(result));
     }

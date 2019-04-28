@@ -25,8 +25,8 @@ public class Temperature extends AppCompatActivity implements AdapterView.OnItem
 
     Spinner spinnerFrom;
     Spinner spinnerTo;
-    String spinner1 = null;
-    String spinner2 = null;
+    private String spinner1 = null;
+    private String spinner2 = null;
 
     private double value;
     private double result = 0;
@@ -110,7 +110,7 @@ public class Temperature extends AppCompatActivity implements AdapterView.OnItem
 
     }
 
-    public void convertUnits(String spinner1, String spinner2, double value){
+    private void convertUnits(String spinner1, String spinner2, double value){
         if(spinner1.contains("Fahrenheit") && spinner2.contains("Celsius"))
         {
             result = ((value - 32)* 5) / 9;
@@ -127,7 +127,7 @@ public class Temperature extends AppCompatActivity implements AdapterView.OnItem
         }
     }
 
-    public void showResult(double result)
+    private void showResult(double result)
     {
         resultDisplay.setText(String.valueOf(result));
     }
