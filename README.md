@@ -1,3 +1,4 @@
-##4th Semester
+4th Semester AND Course Assignment
 
-This repository contains the course assignment for an Android Studio class made by Amahdya Delkescamp.  The Android application I have made is a unit conversion application.
+This app was developed by Amahdya D.
+This repository contains the source code for a Metric to Imperial Unit Converter app that was made as a course assignment for an Android Development course.  
