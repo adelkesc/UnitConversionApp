@@ -27,7 +27,8 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
     Spinner spinnerTo;
     String spinner1 = null;
     String spinner2 = null;
-    int value;
+    double value;
+    double result = 0;
 
     private DatabaseReference appDatabase;
 
@@ -60,8 +61,9 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
         convertButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                value = Integer.parseInt(convertFrom.getText().toString());
-                showResult(value);
+                value = Double.parseDouble(convertFrom.getText().toString());
+                convertUnits(spinner1, spinner2, value);
+                showResult(result);
             }
         });
 
@@ -100,9 +102,6 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         spinner1 = spinnerFrom.getSelectedItem().toString();
         spinner2 = spinnerTo.getSelectedItem().toString();
-
-        convertUnits(spinner1, spinner2);
-//        showResult(result);
     }
 
     @Override
@@ -110,27 +109,33 @@ public class Velocity extends AppCompatActivity implements AdapterView.OnItemSel
         //no method here
     }
 
-    public void convertUnits(String spinner1, String spinner2)
+    public void convertUnits(String spinner1, String spinner2, double value)
     {
         if(spinner1.contains("Miles Per Hour") && spinner2.contains("Kilometers Per Hour"))
         {
             String success = "This works.";
             Toast.makeText(this, success, Toast.LENGTH_SHORT).show();
+
+            result = value * 1.61;
         }
         else if(spinner1.contains("Kilometers Per Hour") && spinner2.contains("Miles Per Hour"))
         {
             String success = "This works.";
             Toast.makeText(this, success, Toast.LENGTH_SHORT).show();
+
+            result = value * 0.62;
         }
         else
         {
             String fail = "This doesn't work.";
             Toast.makeText(this, fail, Toast.LENGTH_SHORT).show();
+
+            result = 0;
         }
     }
 
-    public void showResult(int value)
+    public void showResult(double result)
     {
-        resultDisplay.setText(String.valueOf(value));
+        resultDisplay.setText(String.valueOf(result));
     }
 }

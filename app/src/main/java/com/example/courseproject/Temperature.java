@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -23,6 +24,9 @@ public class Temperature extends AppCompatActivity implements AdapterView.OnItem
     String spinner1 = null;
     String spinner2 = null;
 
+    private double value;
+    private double result = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +35,8 @@ public class Temperature extends AppCompatActivity implements AdapterView.OnItem
         Toolbar toolbar = (Toolbar) findViewById(R.id.appToolbarCategory);
         setSupportActionBar(toolbar);
 
+        Button convertButton = (Button) findViewById(R.id.convertButton);
+        Button saveButton = (Button) findViewById(R.id.saveButton);
         convertFrom = (EditText) findViewById(R.id.entryView);
         resultDisplay = (TextView) findViewById(R.id.resultView);
 
@@ -44,6 +50,22 @@ public class Temperature extends AppCompatActivity implements AdapterView.OnItem
         spinnerTo.setAdapter(adapter);
         spinnerFrom.setOnItemSelectedListener(this);
         spinnerTo.setOnItemSelectedListener(this);
+
+        convertButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                value = Double.parseDouble(convertFrom.getText().toString());
+                convertUnits(spinner1, spinner2, value);
+                showResult(result);
+            }
+        });
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
@@ -75,7 +97,23 @@ public class Temperature extends AppCompatActivity implements AdapterView.OnItem
 
     }
 
-    public void convertUnits(String spinner1, String spinner2){
+    public void convertUnits(String spinner1, String spinner2, double value){
+        if(spinner1.contains("Fahrenheit") && spinner2.contains("Celsius"))
+        {
+            result = ((value - 32)* 5) / 9;
+        }
+        else if(spinner1.contains("Celsius") && spinner2.contains("Fahrenheit"))
+        {
+            result = (value * 1.8) + 32;
+        }
+        else
+        {
+            result = 0;
+        }
+    }
 
+    public void showResult(double result)
+    {
+        resultDisplay.setText(String.valueOf(result));
     }
 }
