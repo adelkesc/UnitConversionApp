@@ -9,9 +9,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Distance extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
@@ -23,6 +28,11 @@ public class Distance extends AppCompatActivity implements AdapterView.OnItemSel
     String spinner1 = null;
     String spinner2 = null;
 
+    private double value;
+    private double result = 0;
+
+    private DatabaseReference appDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +41,10 @@ public class Distance extends AppCompatActivity implements AdapterView.OnItemSel
         Toolbar toolbar = (Toolbar) findViewById(R.id.appToolbarCategory);
         setSupportActionBar(toolbar);
 
+        appDatabase = FirebaseDatabase.getInstance().getReference();
+
+        Button convertButton = (Button) findViewById(R.id.convertButton);
+        Button saveButton = (Button) findViewById(R.id.saveButton);
         convertFrom = (EditText) findViewById(R.id.entryView);
         resultDisplay = (TextView) findViewById(R.id.resultView);
 
@@ -44,6 +58,27 @@ public class Distance extends AppCompatActivity implements AdapterView.OnItemSel
         spinnerTo.setAdapter(adapter);
         spinnerFrom.setOnItemSelectedListener(this);
         spinnerTo.setOnItemSelectedListener(this);
+
+        convertButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                value = Double.parseDouble(convertFrom.getText().toString());
+                convertUnits(spinner1, spinner2, value);
+                showResult(result);
+            }
+        });
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String valueToSave = resultDisplay.getText().toString();
+                appDatabase.child("Saved Conversions").setValue(valueToSave);
+
+                resultDisplay.setText("");
+                Toast.makeText(Distance.this, "Result saved.", Toast.LENGTH_SHORT)
+                        .show();
+            }
+        });
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
@@ -74,4 +109,31 @@ public class Distance extends AppCompatActivity implements AdapterView.OnItemSel
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
+    public void convertUnits(String spinner1, String spinner2, double value)
+    {
+        switch (spinner1)
+        {
+            case "Inches":
+                switch (spinner2)
+                {
+                    case "Millimeters":
+                        result = value * 25.4;
+                }
+            case "Millimeters":
+                switch (spinner2)
+                {
+                    case "Inches":
+                        result = value / 25.4;
+                }
+            default:
+                break;
+        }
+    }
+
+    public void showResult(double result)
+    {
+        resultDisplay.setText(String.valueOf(result));
+    }
+
 }

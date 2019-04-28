@@ -128,7 +128,8 @@ public class Mass extends AppCompatActivity implements AdapterView.OnItemSelecte
                         result = value / 28.35;
                         break;
                 }
-                default: break;
+                default:
+                    break;
         }
     }
 

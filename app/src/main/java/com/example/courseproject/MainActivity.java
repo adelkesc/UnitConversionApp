@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
             //Toast.makeText(this, "Light mode", Toast.LENGTH_SHORT).show();
         }
     }
-//      NETWORKING UNDER CONSTRUCTION
+
 
     private String sendHttpRequest(URL url) throws IOException
     {
@@ -204,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
                 String id = properties.getString("id");
                 String county = properties.getString("name");
                 String state = properties.getString("state");
-                String location = "ID: " + id + "\nCounty: " + county + "\nState: " + state;
+                String location = "Location ID: " + id + "\nCounty: " + county + "\nState: " + state;
                 Toast.makeText(MainActivity.this, location, Toast.LENGTH_LONG).show();
             }
             catch (JSONException je)
